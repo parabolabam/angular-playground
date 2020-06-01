@@ -123,6 +123,11 @@
           }
         }
       }
-    }},
-  "defaultProject": "angular-playground"
+    }
+  },
+  "defaultProject": "angular-playground",
+  "cli": {
+    "analytics": "fa3116f1-a12f-4d87-bdbf-2fbe94f3f600",
+    "defaultCollection": "@datorama/akita"
+  }
 }
