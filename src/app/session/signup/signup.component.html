@@ -1,2 +1,41 @@
-<p>signup works!</p>
-<app-login></app-login>
+<style>
+    .padding {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+</style> 
+<div>
+    <div class="padding">
+        <label for="CKEditor v5">
+        <a class="link" href="https://www.npmjs.com/package/@ckeditor/ckeditor5-angular" target="_blank">
+            CKEditor v5 (365 kB): <span style="background-color: green; color: whitesmoke;">(winner yet)</span>
+        </a></label>
+        <div class="padding">
+            <ckeditor id="CKEditor v5" [editor]="Editor" data="<p>Hello, world!</p>"></ckeditor>
+
+        </div>
+    </div>
+    <div class="padding">
+        <label for="rich text editor">
+            <a class="link" href="https://www.tiny.cloud/blog/angular-rich-text-editor/" target="_blank">
+                rich text editor (6.35 MB):
+            </a></label>
+            <p>
+                <span>NOTE</span>
+                Get your free API key at 
+                <a target="_blank" href="https://www.tiny.cloud/">tiny.cloud</a> and paste it here
+            </p>
+            <div class="padding">
+                <editor
+                    apiKey="6sk4s2amtdvirxjkccw6wnrn9t9tedg6ys41bjiw12mc44ls"
+                    [init]="{
+                        icons: 'material',
+                        skin: 'borderless',
+                        plugins: 'wordcount',
+                        menubar: false,
+                        min_height: 150
+                    }"
+                ></editor>
+            </div>
+    </div>
+</div>
