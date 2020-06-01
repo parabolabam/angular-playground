@@ -7,7 +7,10 @@ import { NG_ENTITY_SERVICE_CONFIG } from '@datorama/akita-ng-entity-service';
 import { AkitaNgDevtools } from '@datorama/akita-ngdevtools';
 import { AkitaNgRouterStoreModule } from '@datorama/akita-ng-router-store';
 import { environment } from '../environments/environment';
-import { SessionModule } from './session/session.module';
+import { Playground } from './playground/playground.module';
+import { EditorModule } from '@progress/kendo-angular-editor';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [
@@ -18,7 +21,9 @@ import { SessionModule } from './session/session.module';
     AppRoutingModule,
     environment.production ? [] : AkitaNgDevtools,
     AkitaNgRouterStoreModule,
-    SessionModule,
+    Playground,
+    EditorModule,
+    BrowserAnimationsModule,
   ],
   providers: [{ provide: NG_ENTITY_SERVICE_CONFIG, useValue: { baseUrl: 'https://jsonplaceholder.typicode.com' }}],
   bootstrap: [AppComponent]

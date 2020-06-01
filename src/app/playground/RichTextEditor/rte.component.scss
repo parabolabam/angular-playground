@@ -1,0 +1,25 @@
+.wrapper {
+    .padding {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+
+        .editor-container {
+            padding-top: 0.4rem
+        }
+        
+        .link {
+            font-size: 16px;
+            text-decoration: underline;
+            color: black;
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+            &:hover {
+                cursor: pointer;
+            }
+            .span-lable {
+                background-color: green;
+                color: whitesmoke;
+            }
+        }
+    }
+}

@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { SignupComponent } from './session/signup/signup.component';
+import { RteComponent } from './playground/RichTextEditor/rte.component';
 
 const routes: Routes = [
-  { path: '', component: SignupComponent }
+  { path: '', component: RteComponent }
 ];
 
 @NgModule({

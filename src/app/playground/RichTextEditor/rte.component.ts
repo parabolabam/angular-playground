@@ -2,17 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 @Component({
-  selector: 'app-signup',
-  templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.scss']
+  selector: 'app-rte',
+  templateUrl: './rte.component.html',
+  styleUrls: ['./rte.component.scss']
 })
-export class SignupComponent implements OnInit {
+export class RteComponent implements OnInit {
   public Editor = ClassicEditor;
 
   constructor() { }
 
-  ngOnInit(): void {
-    
-  }
+  ngOnInit(): void {}
 
 }
