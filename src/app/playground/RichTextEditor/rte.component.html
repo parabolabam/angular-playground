@@ -20,13 +20,42 @@
         </div>
     </div>
     <div class="padding">
+        <label for="kendo-editor">
+            <a class="link" href="https://www.npmjs.com/package/@progress/kendo-angular-editor" target="_blank">
+                ngx-quill (677 kB):
+            </a>
+        </label>
+        <div class="editor-container">
+            <quill-editor></quill-editor>
+        </div>
+    </div>
+    <div class="padding">
         <label for="quill-editor">
             <a class="link" href="https://www.npmjs.com/package/ngx-quill" target="_blank">
                 ngx-quill (677 kB): <span class="span-table">(winner yet)</span>
             </a>
         </label>
         <div class="editor-container">
-            <quill-editor id="quill-editor"></quill-editor>
+            <quill-editor 
+                    [(ngModel)]="brief"
+                    [modules]="getConfigModules()"
+                    id="quill-editor"
+            >
+            </quill-editor>
+            <div class="container">
+                <div>
+                    <button [ngClass]="buttonClasses()" class="open-button" (click)="toogleToolbar()">
+                        A
+                    </button>
+                </div>
+                <div class="toolbar" [hidden]="!getIsToolbarActivated()">
+                    <button class="ql-bold">Bold</button>
+                    <button class="ql-underline">Underline</button>
+                    <button class="ql-italic">Italic</button>
+                    <button class="ql-list margin-left" value="ordered">Ordered</button>
+                    <button class="ql-list" value="bullet">Bullet</button>
+                </div>
+            </div>
         </div>
     </div>
 </div>

@@ -1,10 +1,15 @@
 .wrapper {
+   
+    .margin-left {
+        margin-left: 1.75rem;
+    }
+
     .padding {
         padding-top: 1rem;
         padding-bottom: 1rem;
 
         .editor-container {
-            padding-top: 0.4rem
+            padding-top: 0.4rem;
         }
         
         .link {
@@ -19,6 +24,29 @@
             .span-lable {
                 background-color: green;
                 color: whitesmoke;
+            }
+        }
+
+        .editor-container {
+            position: relative;
+
+            .container {
+                display: flex;
+                min-height: 3rem;
+                border-collapse: collapse;
+
+                .open-button {
+                    height: 100%;
+
+                    &.active {
+                        background-color: black;
+                        color: whitesmoke;
+                    }
+                }
+
+                .toolbar {
+                    flex: 1
+                }
             }
         }
     }
