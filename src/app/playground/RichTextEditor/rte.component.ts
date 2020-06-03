@@ -8,9 +8,6 @@ import { startWith, delay } from 'rxjs/operators';
   styleUrls: ['./rte.component.scss']
 })
 export class RteComponent {
-  @ViewChild('tooltip') tooltip;
-  @ViewChild('quillEditor') quillContainer = {};
-
   public Editor = ClassicEditor;
   public brief = `
     Lorem ipsum, dolor sit amet consectetur adipisicing elit. Saepe placeat, rerum corrupti magni nihil dolor optio quae officiis eveniet sint nisi, ratione quisquam, id modi pariatur odit. Quae, quia cupiditate.
@@ -36,10 +33,6 @@ export class RteComponent {
   private quillConfig = null;
   private isToolbarActivated;
 
-  getScrollingContainer() {
-    return this.quillContainer;
-  }
-
   getConfigModules() {
     return this.quillConfig.modules;
   }
@@ -50,6 +43,10 @@ export class RteComponent {
 
   toogleToolbar() {
     this.isToolbarActivated = !this.isToolbarActivated;
+  }
+
+  onEditorCreated(quillInstance) {
+    debugger;
   }
 
   quillEditorLocalStyles() {
@@ -68,8 +65,8 @@ scrollingContainerSelector() {
   }
 
 constructor() {
-    this.isToolbarActivated = false;
-    this.quillConfig = {
+  this.isToolbarActivated = false;
+  this.quillConfig = {
       bounds: 'self',
       modules: {
         toolbar: '.toolbar',
