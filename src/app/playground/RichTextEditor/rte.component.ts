@@ -1,4 +1,4 @@
-import { Component, ViewChild, AfterViewInit, ViewEncapsulation } from '@angular/core';
+import { Component, AfterViewInit, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import Quill from 'quill';
 
@@ -7,6 +7,8 @@ import Quill from 'quill';
   templateUrl: './rte.component.html',
   styleUrls: ['./rte.component.scss'],
   encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+
 })
 export class RteComponent implements AfterViewInit {
   public Editor = ClassicEditor;
