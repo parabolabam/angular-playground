@@ -51,11 +51,23 @@ export class RteComponent {
   toogleToolbar() {
     this.isToolbarActivated = !this.isToolbarActivated;
   }
-  buttonClasses() {
+
+  quillEditorLocalStyles() {
+    return {
+      overflowY: 'auto',
+      maxHeight: '20rem'
+    };
+  }
+
+buttonClasses() {
     return this.isToolbarActivated ? 'open-button active' : 'open-button';
   }
 
-  constructor() {
+scrollingContainerSelector() {
+    return '.ql-container';
+  }
+
+constructor() {
     this.isToolbarActivated = false;
     this.quillConfig = {
       bounds: 'self',

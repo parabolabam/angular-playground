@@ -11,22 +11,23 @@
                 <quill-editor 
                     [(ngModel)]="brief"
                     [modules]="getConfigModules()"
-                    [scrollingContainer]="'.ql-container'"
-                    class="quill-editor"
+                    customToolbarPosition='bottom'
+                    scrollingContainer=".ql-editor"
+                    [styles]="quillEditorLocalStyles()"
                 >
+                    <div class="container" quill-editor-toolbar>
+                        <div [ngClass]="buttonClasses()" (click)="toogleToolbar()">
+                            A
+                        </div>
+                        <div [ngClass]="toolbarClasses()">
+                            <button class="ql-bold zero-padding">Bold</button>
+                            <button class="ql-underline zero-padding">Underline</button>
+                            <button class="ql-italic zero-padding">Italic</button>
+                            <button class="ql-list margin-left zero-padding" value="ordered">Ordered</button>
+                            <button class="ql-list zero-padding" value="bullet">Bullet</button>
+                        </div>
+                    </div>
                 </quill-editor>
-                <div class="container">
-                    <div [ngClass]="buttonClasses()" (click)="toogleToolbar()">
-                        A
-                    </div>
-                    <div [ngClass]="toolbarClasses()">
-                        <button class="ql-bold zero-padding">Bold</button>
-                        <button class="ql-underline zero-padding">Underline</button>
-                        <button class="ql-italic zero-padding">Italic</button>
-                        <button class="ql-list margin-left zero-padding" value="ordered">Ordered</button>
-                        <button class="ql-list zero-padding" value="bullet">Bullet</button>
-                    </div>
-                </div>
            </div>
         </div>
     </div>
