@@ -43,22 +43,24 @@
                 border-collapse: collapse;
 
                 .open-button {
-                    font-size: 1rem;
+                    font-size: 1.5rem;
                     background-color: whitesmoke;
                     border: 1px solid gray;
-                    min-height: 1.5rem;
-                    min-width: 1.5rem;
+                    min-height: 2rem;
+                    min-width: 2rem;
                     display: flex;
                     justify-content: center;
                     align-items: center;
 
                     &:hover {
+                        cursor: pointer;
                         color: #0066cc;
                     }
 
                     &.active {
                         background-color: black;
                         color: whitesmoke;
+                        border: 1px solid transparent;
                     }
                 }
 
@@ -66,12 +68,11 @@
                     flex: 1;
                     background-color: #f2f2f2;
                     padding: 0;
-
                     display: flex;
                     justify-content: center;
                     align-items: center;
-
                     padding-left: 1rem;
+                    min-height: 2.1rem;
 
                     &.hidden {
                         display: none;
