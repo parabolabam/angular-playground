@@ -1,61 +1,33 @@
 <div class="wrapper">
     <div class="padding">
-        <label for="CKEditor v5">
-            <a class="link" href="https://www.npmjs.com/package/@ckeditor/ckeditor5-angular" target="_blank">
-                CKEditor v5 (365 kB + doesn't know how to underline): 
-            </a>
-        </label>
-        <div class="editor-container">
-            <ckeditor id="CKEditor v5" [editor]="Editor"></ckeditor>
-        </div>
-    </div>
-    <div class="padding">
-        <label for="kendo-editor">
-            <a class="link" href="https://www.npmjs.com/package/@progress/kendo-angular-editor" target="_blank">
-                @progress/kendo-angular-editor (2.45 MB):
-            </a>
-        </label>
-        <div class="editor-container">
-            <kendo-editor id="kendo-editor"></kendo-editor>
-        </div>
-    </div>
-    <div class="padding">
-        <label for="kendo-editor">
-            <a class="link" href="https://www.npmjs.com/package/@progress/kendo-angular-editor" target="_blank">
-                ngx-quill (677 kB):
-            </a>
-        </label>
-        <div class="editor-container">
-            <quill-editor></quill-editor>
-        </div>
-    </div>
-    <div class="padding">
         <label for="quill-editor">
             <a class="link" href="https://www.npmjs.com/package/ngx-quill" target="_blank">
                 ngx-quill (677 kB): <span class="span-table">(winner yet)</span>
             </a>
         </label>
         <div class="editor-container">
-            <quill-editor 
+
+           <div class="editor-container-wrapper">
+                <quill-editor 
                     [(ngModel)]="brief"
                     [modules]="getConfigModules()"
-                    id="quill-editor"
-            >
-            </quill-editor>
-            <div class="container">
-                <div>
-                    <button [ngClass]="buttonClasses()" class="open-button" (click)="toogleToolbar()">
+                    [scrollingContainer]="'.ql-container'"
+                    class="quill-editor"
+                >
+                </quill-editor>
+                <div class="container">
+                    <div [ngClass]="buttonClasses()" (click)="toogleToolbar()">
                         A
-                    </button>
+                    </div>
+                    <div [ngClass]="toolbarClasses()">
+                        <button class="ql-bold zero-padding">Bold</button>
+                        <button class="ql-underline zero-padding">Underline</button>
+                        <button class="ql-italic zero-padding">Italic</button>
+                        <button class="ql-list margin-left zero-padding" value="ordered">Ordered</button>
+                        <button class="ql-list zero-padding" value="bullet">Bullet</button>
+                    </div>
                 </div>
-                <div class="toolbar" [hidden]="!getIsToolbarActivated()">
-                    <button class="ql-bold">Bold</button>
-                    <button class="ql-underline">Underline</button>
-                    <button class="ql-italic">Italic</button>
-                    <button class="ql-list margin-left" value="ordered">Ordered</button>
-                    <button class="ql-list" value="bullet">Bullet</button>
-                </div>
-            </div>
+           </div>
         </div>
     </div>
 </div>

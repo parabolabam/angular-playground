@@ -30,13 +30,31 @@
         .editor-container {
             position: relative;
 
+            .editor-container-wrapper {
+                position: relative;
+
+                
+            }
             .container {
+                position: absolute;
+                bottom: 0;
                 display: flex;
-                min-height: 3rem;
+                align-items: center;
                 border-collapse: collapse;
 
                 .open-button {
-                    height: 100%;
+                    font-size: 1rem;
+                    background-color: whitesmoke;
+                    border: 1px solid gray;
+                    min-height: 1.5rem;
+                    min-width: 1.5rem;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    &:hover {
+                        color: #0066cc;
+                    }
 
                     &.active {
                         background-color: black;
@@ -45,9 +63,25 @@
                 }
 
                 .toolbar {
-                    flex: 1
+                    flex: 1;
+                    background-color: #f2f2f2;
+                    padding: 0;
+
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    padding-left: 1rem;
+
+                    &.hidden {
+                        display: none;
+                    }
+
+                    .zero-padding {
+                        padding: 0;
+                    }
                 }
             }
         }
-    }
+    }  
 }
