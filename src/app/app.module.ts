@@ -10,8 +10,13 @@ import { environment } from '../environments/environment';
 import { Playground } from './playground/playground.module';
 import { EditorModule } from '@progress/kendo-angular-editor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
+import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
+import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 
-
+const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
+  suppressScrollX: true
+};
 @NgModule({
   declarations: [
     AppComponent
@@ -24,8 +29,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     Playground,
     EditorModule,
     BrowserAnimationsModule,
+    PerfectScrollbarModule
   ],
-  providers: [{ provide: NG_ENTITY_SERVICE_CONFIG, useValue: { baseUrl: 'https://jsonplaceholder.typicode.com' }}],
-  bootstrap: [AppComponent]
+  providers: [{ provide: NG_ENTITY_SERVICE_CONFIG, useValue: { baseUrl: 'https://jsonplaceholder.typicode.com' }}, {
+    provide: PERFECT_SCROLLBAR_CONFIG,
+    useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
+  }],
+  bootstrap: [AppComponent],
+  exports: [
+    PerfectScrollbarModule
+  ]
 })
 export class AppModule { }

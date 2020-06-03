@@ -2,11 +2,10 @@
     <div class="padding">
         <label for="quill-editor">
             <a class="link" href="https://www.npmjs.com/package/ngx-quill" target="_blank">
-                ngx-quill (677 kB): <span class="span-table">(winner yet)</span>
+                ngx-quill (677 kB) + (found no way how to add costomizable scrollbar): <span class="span-table">(winner yet)</span>
             </a>
         </label>
         <div class="editor-container">
-
            <div class="editor-container-wrapper">
                 <quill-editor 
                     [(ngModel)]="brief"
@@ -29,6 +28,24 @@
                     </div>
                 </quill-editor>
            </div>
+        </div>
+    </div>
+
+    <div id="quill">          
+        <div class="ps ps-show-always" [perfectScrollbar]="{}" id="editor">
+            <div>{{brief}}</div>
+        </div>
+        <div id="toolbar">
+            <div [ngClass]="buttonClasses()" (click)="toogleToolbar()">
+                A
+            </div>
+            <div [ngClass]="toolbarClasses()">
+                <button class="ql-bold zero-padding">Bold</button>
+                <button class="ql-underline zero-padding">Underline</button>
+                <button class="ql-italic zero-padding">Italic</button>
+                <button class="ql-list margin-left zero-padding" value="ordered">Ordered</button>
+                <button class="ql-list zero-padding" value="bullet">Bullet</button>
+            </div>
         </div>
     </div>
 </div>

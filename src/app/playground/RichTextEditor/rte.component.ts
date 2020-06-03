@@ -1,13 +1,14 @@
-import { Component, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, ViewChild, AfterViewInit, ViewEncapsulation } from '@angular/core';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import { startWith, delay } from 'rxjs/operators';
+import Quill from 'quill';
 
 @Component({
   selector: 'app-rte',
   templateUrl: './rte.component.html',
-  styleUrls: ['./rte.component.scss']
+  styleUrls: ['./rte.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
-export class RteComponent {
+export class RteComponent implements AfterViewInit {
   public Editor = ClassicEditor;
   public brief = `
     Lorem ipsum, dolor sit amet consectetur adipisicing elit. Saepe placeat, rerum corrupti magni nihil dolor optio quae officiis eveniet sint nisi, ratione quisquam, id modi pariatur odit. Quae, quia cupiditate.
@@ -29,6 +30,7 @@ export class RteComponent {
     Lorem ipsum, dolor sit amet consectetur adipisicing elit. Saepe placeat, rerum corrupti magni nihil dolor optio quae officiis eveniet sint nisi, ratione quisquam, id modi pariatur odit. Quae, quia cupiditate.
     Lorem ipsum, dolor sit amet consectetur adipisicing elit. Saepe placeat, rerum corrupti magni nihil dolor optio quae officiis eveniet sint nisi, ratione quisquam, id modi pariatur odit. Quae, quia cupiditate.
   `;
+  public config = {};
 
   private quillConfig = null;
   private isToolbarActivated;
@@ -45,9 +47,6 @@ export class RteComponent {
     this.isToolbarActivated = !this.isToolbarActivated;
   }
 
-  onEditorCreated(quillInstance) {
-    debugger;
-  }
 
   quillEditorLocalStyles() {
     return {
@@ -72,6 +71,13 @@ constructor() {
         toolbar: '.toolbar',
       },
     };
+  }
+
+  ngAfterViewInit() {
+    const editor = new Quill('#editor', {
+      modules: { toolbar: '#toolbar' },
+      theme: 'snow'
+    });
   }
 
 }
