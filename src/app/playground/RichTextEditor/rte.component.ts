@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
+import { Component, AfterViewInit, ViewEncapsulation, ChangeDetectionStrategy, ViewChild, ElementRef } from '@angular/core';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import Quill from 'quill';
 
@@ -11,6 +11,7 @@ import Quill from 'quill';
 
 })
 export class RteComponent implements AfterViewInit {
+  @ViewChild('toolbar2') secondToolbar: ElementRef;
   public Editor = ClassicEditor;
   public brief = `
     Lorem ipsum, dolor sit amet consectetur adipisicing elit. Saepe placeat, rerum corrupti magni nihil dolor optio quae officiis eveniet sint nisi, ratione quisquam, id modi pariatur odit. Quae, quia cupiditate.
@@ -45,6 +46,10 @@ export class RteComponent implements AfterViewInit {
     return this.isToolbarActivated ? 'toolbar' : 'toolbar hidden';
   }
 
+  toolbarContainerClasses() {
+    return this.isToolbarActivated ? 'border-present' : 'no-border';
+  }
+
   toogleToolbar() {
     this.isToolbarActivated = !this.isToolbarActivated;
   }
@@ -76,8 +81,14 @@ constructor() {
   }
 
   ngAfterViewInit() {
+
     const editor = new Quill('#editor', {
       modules: { toolbar: '#toolbar' },
+      theme: 'snow'
+    });
+
+    const editor2 = new Quill('#editor2', {
+      modules: { toolbar: '#toolbar2' },
       theme: 'snow'
     });
   }

@@ -53,13 +53,15 @@
     background-color: #f2f2f2;
     padding: 0;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     padding-left: 1rem;
     min-height: 2.1rem;
+    border: 1px solid #ccc;
 
     &.hidden {
         display: none;
+        border: none
     }
 
     .zero-padding {
@@ -76,6 +78,7 @@
     justify-content: center;
     align-items: center;
     opacity: 0.7;
+    border: 1px solid #ccc;
 
     &:hover {
         opacity: 1;
@@ -91,19 +94,28 @@
 }
 
 
-#quill {
+#quill, #quill-2 {
     position: relative;
 }
-#editor {
+#editor, #editor2 {
     max-height: 320px;
     overflow-y: auto;
 }
-#toolbar {
+#toolbar, #toolbar2 {
     position: absolute;
     bottom: 0;
     padding: 0;
+    width: 100%;
 
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
+
+    border: none;
+    box-sizing: border-box;
+    font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+}
+
+.red-border {
+    border: 1px solid red; 
 }
