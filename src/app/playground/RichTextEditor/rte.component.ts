@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, ViewEncapsulation, ChangeDetectionStrategy, ViewChild, ElementRef } from '@angular/core';
+import { Component, AfterViewInit, ViewEncapsulation, ChangeDetectionStrategy, ViewChild, ElementRef, ChangeDetectorRef } from '@angular/core';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import Quill from 'quill';
 
@@ -42,6 +42,14 @@ export class RteComponent implements AfterViewInit {
     return this.quillConfig.modules;
   }
 
+  toggleToolbar() {
+    this.isToolbarActivated = !this.isToolbarActivated;
+  }
+
+  toolbarActivatorClasses() {
+    return this.isToolbarActivated ? 'toolbar-activator black' : 'toolbar-activator';
+  }
+
   toolbarClasses() {
     return this.isToolbarActivated ? 'toolbar' : 'toolbar hidden';
   }
@@ -54,6 +62,9 @@ export class RteComponent implements AfterViewInit {
     this.isToolbarActivated = !this.isToolbarActivated;
   }
 
+  getScrollingContainer() {
+    return this.el.nativeElement.querySelector('#scrollingContainer');
+  }
 
   quillEditorLocalStyles() {
     return {
@@ -62,34 +73,36 @@ export class RteComponent implements AfterViewInit {
     };
   }
 
-buttonClasses() {
-    return this.isToolbarActivated ? 'open-button active' : 'open-button';
+  buttonClasses() {
+      return this.isToolbarActivated ? 'open-button active' : 'open-button';
+    }
+
+  constructor(private cdr: ChangeDetectorRef, private el: ElementRef) {
+    this.isToolbarActivated = false;
+    this.quillConfig = {
+        bounds: 'self',
+        modules: {
+          toolbar: '.toolbar',
+        },
+      };
   }
 
-scrollingContainerSelector() {
-    return '.ql-container';
-  }
-
-constructor() {
-  this.isToolbarActivated = false;
-  this.quillConfig = {
-      bounds: 'self',
-      modules: {
-        toolbar: '.toolbar',
-      },
-    };
+  setBrief(val: string) {
+    this.brief = val;
   }
 
   ngAfterViewInit() {
 
-    const editor = new Quill('#editor', {
-      modules: { toolbar: '#toolbar' },
+    const editor = new Quill('#quill-editor', {
+      modules: { toolbar: '#toolbar-2' },
       theme: 'snow'
     });
 
-    const editor2 = new Quill('#editor2', {
-      modules: { toolbar: '#toolbar2' },
-      theme: 'snow'
+    editor.on('text-change', (delta, oldContents, source) => {
+      console.log(editor.getContents().ops[0]);
+      const [quillContent] = editor.getContents().ops;
+      this.setBrief(quillContent.insert);
+      this.cdr.detectChanges();
     });
   }
 

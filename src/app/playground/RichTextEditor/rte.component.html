@@ -1,37 +1,17 @@
-<div class="wrapper">
-
-    <div id="quill">          
-        <div class="ps ps-show-always" [perfectScrollbar]="{}" id="editor">
-            <div>{{brief}}</div>
-        </div>
-        <div id="toolbar" [ngClass]="toolbarContainerClasses()">
-            <div [ngClass]="buttonClasses()" (click)="toogleToolbar()">
-                A
+<div class="wrapper" style="margin-top: 3rem; position: relative;">
+    <div id="quill" style="width: 52rem">          
+        <perfect-scrollbar id="perfect-scrollbar" style="height: 220px; width: 100%; position: relative;">
+            <div id="quill-editor">
+                {{  brief }}
             </div>
-            <div [ngClass]="toolbarClasses()">
-                <button class="ql-bold zero-padding">Bold</button>
-                <button class="ql-underline zero-padding">Underline</button>
-                <button class="ql-italic zero-padding">Italic</button>
-                <button class="ql-list margin-left zero-padding" value="ordered">Ordered</button>
-                <button class="ql-list zero-padding" value="bullet">Bullet</button>
-            </div>
-        </div>
-    </div>
-
-    <div id="quill-2" style="padding-top: 5rem">          
-        <perfect-scrollbar class="ps" id="editor2" [config]="{}">
-            <div>{{brief}}</div>
         </perfect-scrollbar>
-        <div id="toolbar2" class="red-border" [ngClass]="toolbarContainerClasses()">
-            <div [ngClass]="buttonClasses()" (click)="toogleToolbar()">
-                A
-            </div>
-            <div [ngClass]="toolbarClasses()">
-                <button class="ql-bold zero-padding">Bold</button>
-                <button class="ql-underline zero-padding">Underline</button>
-                <button class="ql-italic zero-padding">Italic</button>
-                <button class="ql-list margin-left zero-padding" value="ordered">Ordered</button>
-                <button class="ql-list zero-padding" value="bullet">Bullet</button>
+        <div class="toolbar-container">
+            <div  [ngClass]="toolbarActivatorClasses()" (click)="toggleToolbar()">A</div>
+            <div id="toolbar-2" [ngClass]="toolbarClasses()">
+                <button class="ql-bold"></button>
+                <button class="ql-italic"></button>
+                <button class="ql-list" value="ordered"></button>
+                <button class="ql-list" value="bullet"></button>
             </div>
         </div>
     </div>
